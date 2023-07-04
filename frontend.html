@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+       table,th,td {
+            border: 1px solid black;
+            border-collapse:collapse
+                    }
+    </style>
+</head>
+<body style="background-color:aliceblue;">
+    <div style="text-align: center;">
+        <h3>Day to Day Expenses</h3>
+        <p id="time" style="float:left;"></p><br><br>    
+        <p id="month"></p><br>
+        <p id="year" ></p><br> 
+
+        <table style=" margin-left: auto;margin-right: auto;">
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Income</th>
+                <th>Expense</th>
+            </tr>
+            <tr>  <td></td> <td></td><td></td><td></td><td></td></tr>
+            <tr>  <td></td> <td></td><td></td><td></td><td></td></tr>
+            <tr>  <td></td> <td></td><td></td><td></td><td></td></tr>
+            <tr>  <td></td> <td></td><td></td><td></td><td></td></tr>
+                </table><br><br>
+                <div>
+                    <h3>Yearly report</h3>
+                    <table style=" margin-left: auto;margin-right: auto;">
+                        <tr>
+                            <th>Month</th>
+                            <th>Income</th>
+                            <th>Expense</th>
+                            <th>Savings</th>
+                        </tr>
+                        <tr>  <td></td> <td></td><td></td><td></td></tr>
+                        <tr>  <td></td> <td></td><td></td><td></td></tr>
+                        <tr>  <td></td> <td></td><td></td><td></td></tr>
+                        <tr>  <td></td> <td></td><td></td><td></td></tr>
+                            </table><br><br>
+                            
+                </div>
+                <div>
+                    <h3>Notes report</h3>
+                    <table style=" margin-left: auto;margin-right: auto;">
+                        <tr>
+                            <th>Date</th>
+                            <th>Notes</th>
+                        </tr>
+                        <tr>  <td></td> <td></td></tr>
+                        <tr>  <td></td> <td></td></tr>
+                            </table><br><br>
+                            
+                </div>
+                <button onclick="download()" style="margin-left:40%;" id="download">Download File</button>
+                
+    </div>
+    </body>
+    <script>
+        const date= new Date();
+        const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        document.getElementById("time").textContent=date;
+        document.getElementById("month").textContent=date.getFullYear();
+        document.getElementById("year").textContent=month[date.getMonth()]+' '+date.getFullYear();
+
+       async  function download()
+        {
+            let res=await axios.get("http://localhost:3000/user/login/download");
+        }
+    </script>
+</html>

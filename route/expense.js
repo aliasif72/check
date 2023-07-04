@@ -1,0 +1,13 @@
+const express=require('express');
+const auth=require('../midleware/auth');
+const router=express.Router();
+const path=require('path');
+const jwt=require('jsonwebtoken');
+const expenseController=require('../controller/expensee');
+router.get('/getExpense',auth.authenticate,expenseController.getExpense);
+router.get('/getExpenseByPk',expenseController.getExpenseByPk);
+router.post('/addExpense',auth.authenticate,expenseController.addExpense);
+router.put('/editExpense/:Nid',expenseController.editExpense);
+router.delete('/deleteExpense/:Nid',auth.authenticate,expenseController.deleteExpense);
+router.get('/download',auth.authenticate,expenseController.download);
+module.exports=router;
