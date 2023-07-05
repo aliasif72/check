@@ -37,7 +37,7 @@ app.use('/called/password',forgotRoute);
 app.use((req,res)=>
 {
     console.log('url', req.url);
-    res.sendFile(path.join(__dirname, `public/${req.url}`))
+    res.sendFile(path.join(__dirname, `${req.url}`))
 })
 
 User.hasMany(downtable,{constraints : true, onDelete:'Cascade'});
