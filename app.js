@@ -1,7 +1,5 @@
 const express=require('express');
-const helmet=require('helmet');
 const compression=require('compression');
-const morgan=require('morgan');
 const Razorpay=require('razorpay');
 const path=require('path');
 const fs=require('fs');
@@ -23,11 +21,8 @@ const Request=require('./model/forgotrequest');
 const downtable = require('./model/downTable');
 const app= express();
 
-const accessFile= fs.createWriteStream(path.join(__dirname, 'access.log'),{flag:'a'});
 //middlewares
-app.use(helmet());
 app.use(compression());
-app.use(morgan('combined', {stream:accessFile}));
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/user', userRoutes);
