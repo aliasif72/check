@@ -19,7 +19,7 @@
                     password
                   }
       try{
-            let res=await axios.post("http:localhost:3000/user/login",userData);
+            let res=await axios.post("http://localhost:3000/user/login",userData);
             localStorage.setItem('token',res.data.token);
             localStorage.setItem('limit',1);
             window.location.href="/addexpense.html"
