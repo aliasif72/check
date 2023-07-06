@@ -45,7 +45,7 @@
                         password
                       }
                       try{
-                        let res=await axios.post("http://54.173.174.245/user/signup",userData);
+                        let res=await axios.post("http://54.173.174.245:3000/user/signup",userData);
                        if(res.status===201)
                        {
                         msg.innerHTML=msg.innerHTML+`<div style="color:green;">${res.data}</div>`;                        
