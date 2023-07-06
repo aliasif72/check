@@ -157,7 +157,7 @@
         class="submitBtn">`;
         document.getElementById("leader").onclick= async function()
       {
-           let resp= await axios.get("http://44.201.195.186:3000/purchase/getCheat");
+           let resp= await axios.get("http://54.173.174.245/purchase/getCheat");
                const parentNode = document.getElementById('listexpenseall');
                 parentNode.innerHTML=' ';
                  for(let i=0;i<resp.data.length;i++)
@@ -168,7 +168,7 @@
                try {
                 limit= localStorage.getItem('limit');
                document.getElementById('pagecount').value=limit;
-               let resp = await axios.get(`http://44.201.195.186:3000/user/login/getExpense?page=1&limit=${limit}`, { headers: { "authorization": token } });
+               let resp = await axios.get(`http://54.173.174.245/user/login/getExpense?page=1&limit=${limit}`, { headers: { "authorization": token } });
                  console.log(resp);
                  pagination(resp.data.pagination);       
                     for (let i = 0; i < resp.data.data.length; i++) {
