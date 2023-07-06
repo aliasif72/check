@@ -97,7 +97,7 @@
           const token = localStorage.getItem('token');
            const decodetoken = parseJwt(token);
       if (decodetoken.isPremium) {
-           let res=await axios.get("http://44.201.195.186:3000/user/login/download", {headers : { "authorization" : token,"limit": lim}});
+           let res=await axios.get("http://54.173.174.245:3000/user/login/download", {headers : { "authorization" : token,"limit": lim}});
              console.log(res.data.list);
              for(let i=0;i<res.data.list.length;i++)
              {
