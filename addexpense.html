@@ -97,7 +97,7 @@
           const token = localStorage.getItem('token');
            const decodetoken = parseJwt(token);
       if (decodetoken.isPremium) {
-           let res=await axios.get("http://44.201.195.186:3000/user/login/download", {headers : { "authorization" : token,"limit": lim}});
+           let res=await axios.get("http://54.173.174.245:3000/user/login/download", {headers : { "authorization" : token,"limit": lim}});
              console.log(res.data.list);
              for(let i=0;i<res.data.list.length;i++)
              {
@@ -129,12 +129,12 @@
 
         if (idd == 0) {
           const token = localStorage.getItem('token');
-          let res = await axios.post("http://44.201.195.186:3000/user/login/addExpense", obj, { headers: { "authorization": token } })
+          let res = await axios.post("http://54.173.174.245:3000/user/login/addExpense", obj, { headers: { "authorization": token } })
           
             saveandshow(res.data);
         }
         else {
-          let res = await axios.put(`http://44.201.195.186:3000/user/login/editExpense/${idd}`, obj);
+          let res = await axios.put(`http://54.173.174.245:3000/user/login/editExpense/${idd}`, obj);
           idd = 0;
           
           saveandshow(res.data);
@@ -157,7 +157,7 @@
         class="submitBtn">`;
         document.getElementById("leader").onclick= async function()
       {
-           let resp= await axios.get("http://54.173.174.245/purchase/getCheat");
+           let resp= await axios.get("http://54.173.174.245:3000/purchase/getCheat");
                const parentNode = document.getElementById('listexpenseall');
                 parentNode.innerHTML=' ';
                  for(let i=0;i<resp.data.length;i++)
@@ -168,7 +168,7 @@
                try {
                 limit= localStorage.getItem('limit');
                document.getElementById('pagecount').value=limit;
-               let resp = await axios.get(`http://54.173.174.245/user/login/getExpense?page=1&limit=${limit}`, { headers: { "authorization": token } });
+               let resp = await axios.get(`http://54.173.174.245:3000/user/login/getExpense?page=1&limit=${limit}`, { headers: { "authorization": token } });
                  console.log(resp);
                  pagination(resp.data.pagination);       
                     for (let i = 0; i < resp.data.data.length; i++) {
@@ -215,7 +215,7 @@ async function getExpensepg(pages, limit)
   localStorage.setItem('limit',limit);
   console.log("called"+pages+" "+limit);
   try {
-        let resp = await axios.get(`http://44.201.195.186:3000/user/login/getExpense?page=${pages}&limit=${limit}`, { headers: { "authorization": token}});
+        let resp = await axios.get(`http://54.173.174.245:3000/user/login/getExpense?page=${pages}&limit=${limit}`, { headers: { "authorization": token}});
       console.log(resp);
       pagination(resp.data.pagination);
        const parentNode = document.getElementById('listexpense');
@@ -260,7 +260,7 @@ console.log(err);
       idd = id;
       try {
         const token = localStorage.getItem('token');
-        let resp = await axios.get("http://44.201.195.186:3000/user/login/getExpenseByPk", { headers: { "authorization": id } });
+        let resp = await axios.get("http://54.173.174.245:3000/user/login/getExpenseByPk", { headers: { "authorization": id } });
         const { category, amount, description } = resp.data;
         console.log(resp.data);
        document.getElementById('amount').value = amount;
@@ -278,7 +278,7 @@ console.log(err);
       removefrom(id);
       try {
         const token = localStorage.getItem('token');
-        let res = await axios.delete(`http://44.201.195.186:3000/user/login/deleteExpense/${id}`, { headers: { "authorization": token } });
+        let res = await axios.delete(`http://54.173.174.245:3000/user/login/deleteExpense/${id}`, { headers: { "authorization": token } });
            }
       catch (err) {
         console.log(err);
