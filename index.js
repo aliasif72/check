@@ -32,3 +32,13 @@ rzp1.on('payment.failed', function(res){
 alert('something went wrong');
 });
 }
+
+ document.getElementById("leader").onclick= async function()
+      {
+           let resp= await axios.get("http://localhost:3000/purchase/getCheat");
+               const parentNode = document.getElementById('listexpenseall');
+                parentNode.innerHTML=' ';
+                 for(let i=0;i<resp.data.length;i++)
+              {
+                showleader(resp.data[i]);
+                  }}
