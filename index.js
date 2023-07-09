@@ -19,6 +19,15 @@ var options={
    const change=document.getElementById('chn');
    change.innerHTML= `<input type="button" id="leader" style="margin-top:4.7%;float:left;" value="Show Leaderboard"
    class="submitBtn">`;
+      document.getElementById("leader").onclick= async function()
+      {
+           let resp= await axios.get("http://localhost:3000/purchase/getCheat");
+               const parentNode = document.getElementById('listexpenseall');
+                parentNode.innerHTML=' ';
+                 for(let i=0;i<resp.data.length;i++)
+              {
+                showleader(resp.data[i]);
+                  }}
    localStorage.setItem('token', res1.data.token); 
 }
 };
@@ -33,12 +42,3 @@ alert('something went wrong');
 });
 }
 
- document.getElementById("leader").onclick= async function()
-      {
-           let resp= await axios.get("http://localhost:3000/purchase/getCheat");
-               const parentNode = document.getElementById('listexpenseall');
-                parentNode.innerHTML=' ';
-                 for(let i=0;i<resp.data.length;i++)
-              {
-                showleader(resp.data[i]);
-                  }}
