@@ -166,13 +166,6 @@
                   }}
               }
                try {
-                  let resp= await axios.get("http://54.173.174.245:3000/purchase/getCheat");
-               const parentNode = document.getElementById('listexpenseall');
-                parentNode.innerHTML=' ';
-                 for(let i=0;i<resp.data.length;i++)
-              {
-                showleader(resp.data[i]);
-                  }
                 limit= localStorage.getItem('limit');
                document.getElementById('pagecount').value=limit;
                let resp = await axios.get(`http://54.173.174.245:3000/user/login/getExpense?page=1&limit=${limit}`, { headers: { "authorization": token } });
@@ -187,19 +180,7 @@
       }
     });
 
-
-    //GET LEADERBOARD
-    // document.getElementById("leader").onclick= async function()
-    //   {
-    //        let resp= await axios.get("http://54.173.174.245:3000/purchase/getCheat");
-    //            const parentNode = document.getElementById('listexpenseall');
-    //             parentNode.innerHTML=' ';
-    //              for(let i=0;i<resp.data.length;i++)
-    //           {
-    //             showleader(resp.data[i]);
-    //               }}
-
-    
+      
 function pagination(data) 
 {  
   const limit= localStorage.getItem('limit') ;
