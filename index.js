@@ -1,4 +1,12 @@
-
+ async function getcheat()
+      {
+           let resp= await axios.get("http://54.173.174.245:3000/purchase/getCheat");
+               const parentNode = document.getElementById('listexpenseall');
+                parentNode.innerHTML=' ';
+                 for(let i=0;i<resp.data.length;i++)
+              {
+                showleader(resp.data[i]);
+                  }}
 
 document.getElementById("razor").onclick= async function(e)
 { 
@@ -17,17 +25,9 @@ var options={
    document.getElementById('razor').style.visibility="hidden";
    document.getElementById('show').innerHTML= `<p style="color:green"> You are a Premium User <p>`;
    const change=document.getElementById('chn');
-   change.innerHTML= `<input type="button" id="leader" style="margin-top:4.7%;float:left;" value="Show Leaderboard"
+   change.innerHTML= `<input type="button" onclick="getcheat()" id="leader" style="margin-top:4.7%;float:left;" value="Show Leaderboard"
    class="submitBtn">`;
-      document.getElementById("leader").onclick= async function()
-      {
-           let resp= await axios.get("http://localhost:3000/purchase/getCheat");
-               const parentNode = document.getElementById('listexpenseall');
-                parentNode.innerHTML=' ';
-                 for(let i=0;i<resp.data.length;i++)
-              {
-                showleader(resp.data[i]);
-                  }}
+     
    localStorage.setItem('token', res1.data.token); 
 }
 };
