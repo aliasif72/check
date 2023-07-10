@@ -92,20 +92,34 @@
 
 //downlaod aws-s3
    document.getElementById('download').onclick=async function(e)
-         {
+     {
           e.preventDefault();
           const token = localStorage.getItem('token');
            const decodetoken = parseJwt(token);
-      if (decodetoken.isPremium) {
-           let res=await axios.get("http://54.173.174.245:3000/user/login/download", {headers : { "authorization" : token,"limit": lim}});
+           try{
+            if (decodetoken.isPremium) {
+                 let res=await axios.get("http://54.173.174.245:3000/user/login/download", {headers : { "authorization" : token}});
              console.log(res.data.list);
+             consle.log(res.data.fileURL);
+             var a=document.createElement("a");
+             a.href=response.data.fileURL;
+             a.download="asifexpense.csv";
+             a.click();
              for(let i=0;i<res.data.list.length;i++)
              {
               showdownloaded(res.data.list[i],i);
              }
+                      }
+  else{
+        throw new Error(response.data.message)
       }
       }
-
+      catch(error)
+      {
+        console.log(error);
+      }
+    }
+    
   function showdownloaded(downloaded,i)
   {
     const list=document.getElementById('list');
